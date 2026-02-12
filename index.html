@@ -113,17 +113,26 @@
 
   <!-- NO (queda primero en el DOM para mantener el hover ~) -->
   <div class="no-btn-container relative w-full sm:w-auto order-2">
-    <div class="no-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4 bg-accent text-background-dark font-bold text-sm rounded-2xl shadow-xl opacity-0 invisible transition-all duration-300 pointer-events-none z-50">
-      <div class="relative">
-        ¡Error 404: Respuesta no encontrada! 😉
-        <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-accent"></div>
-      </div>
+  <div id="noTooltip"
+       class="no-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4
+              bg-accent text-background-dark font-bold text-sm rounded-2xl shadow-xl
+              opacity-0 invisible transition-all duration-300 pointer-events-none z-50">
+    <div class="relative">
+      ¡Error 404: Respuesta no encontrada! 😉
+      <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0
+                  border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent
+                  border-t-[8px] border-t-accent"></div>
     </div>
-
-    <button class="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-transparent border-2 border-dashed border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500 text-base sm:text-lg font-bold rounded-full transition-all duration-300 hover:opacity-50 cursor-not-allowed">
-      NO
-    </button>
   </div>
+
+  <button id="noBtn"
+          type="button"
+          class="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-transparent border-2 border-dashed
+                 border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500
+                 text-base sm:text-lg font-bold rounded-full transition-all duration-300 hover:opacity-50">
+    NO
+  </button>
+</div>
 
   <!-- SÍ (se muestra primero siempre) -->
   <button
@@ -237,6 +246,22 @@ noBtn.addEventListener("mouseenter", ()=>{
   const x = Math.random()*200 - 100;
   const y = Math.random()*100 - 50;
   noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+const noBtn2 = document.getElementById("noBtn");
+const noTooltip = document.getElementById("noTooltip");
+
+noBtn2.addEventListener("click", () => {
+  // mostrar
+  noTooltip.classList.remove("opacity-0", "invisible");
+  noTooltip.classList.add("opacity-100", "visible");
+
+  // ocultar después de 1.6s
+  clearTimeout(window.__noTooltipTimer);
+  window.__noTooltipTimer = setTimeout(() => {
+    noTooltip.classList.add("opacity-0", "invisible");
+    noTooltip.classList.remove("opacity-100", "visible");
+  }, 1600);
 });
 
 </script>
