@@ -31,15 +31,7 @@
         }
     </script>
 <style type="text/tailwindcss">
-        @layer components {
-            .no-btn-container:hover .no-tooltip {
-                @apply opacity-100 visible -translate-y-2;
-            }
-            .no-btn-container:hover ~ .yes-button {
-                @apply scale-125 shadow-[0_0_60px_rgba(236,19,19,0.8)] ring-4 ring-primary/50;
-                animation: intense-pulse 0.8s infinite;
-            }
-        }
+        
         @keyframes floating-hearts {
             0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
             50% { opacity: 0.6; }
