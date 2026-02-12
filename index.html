@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="dark" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#ec1313",
+                        "accent": "#ffcc00",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#221010",
+                    },
+                    fontFamily: {
+                        "display": ["Plus Jakarta Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "1rem",
+                        "lg": "2rem",
+                        "xl": "3rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer components {
+            .no-btn-container:hover .no-tooltip {
+                @apply opacity-100 visible -translate-y-2;
+            }
+            .no-btn-container:hover ~ .yes-button {
+                @apply scale-125 shadow-[0_0_60px_rgba(236,19,19,0.8)] ring-4 ring-primary/50;
+                animation: intense-pulse 0.8s infinite;
+            }
+        }
+        @keyframes floating-hearts {
+            0% { transform: translateY(0px) rotate(0deg); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+        }
+        @keyframes intense-pulse {
+            0% { transform: scale(1.1); box-shadow: 0 0 0 0 rgba(236, 19, 19, 0.7); }
+            50% { transform: scale(1.25); box-shadow: 0 0 0 30px rgba(236, 19, 19, 0); }
+            100% { transform: scale(1.1); box-shadow: 0 0 0 0 rgba(236, 19, 19, 0); }
+        }
+        .heart-particle {
+            position: absolute;
+            bottom: -50px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .pulse-effect {
+            animation: pulse-ring 2s cubic-bezier(0.455, 0.03, 0.515, 0.955) infinite;
+        }
+        @keyframes pulse-ring {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 19, 19, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 20px rgba(236, 19, 19, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(236, 19, 19, 0); }
+        }
+    </style>
+<title>San valentín</title>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen overflow-x-hidden relative">
+  <!-- Decoración responsive -->
+  <div class="fixed inset-0 pointer-events-none overflow-hidden select-none">
+    <div class="absolute top-14 sm:top-1/4 left-4 sm:left-10 text-primary/10 rotate-12">
+      <span class="material-icons text-[72px] sm:text-[120px]">favorite</span>
+    </div>
+
+    <div class="absolute bottom-24 sm:bottom-1/4 right-4 sm:right-10 text-primary/10 -rotate-12">
+      <span class="material-icons text-[90px] sm:text-[160px]">favorite</span>
+    </div>
+
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2
+                w-[320px] h-[320px] sm:w-[460px] sm:h-[460px] lg:w-[600px] lg:h-[600px]
+                bg-primary/5 rounded-full blur-[90px] sm:blur-[110px] lg:blur-[120px]">
+    </div>
+  </div>
+
+  <!-- Main: padding responsive + espacio para footer -->
+  <main class="relative z-10 flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 text-center pb-28 sm:pb-24">
+    <div class="w-full max-w-4xl mx-auto space-y-6 sm:space-y-8 mb-8 sm:mb-12">
+      <div class="inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium">
+        <span class="material-icons text-sm">auto_awesome</span>
+        <span class="text-[10px] sm:text-xs uppercase tracking-widest font-bold">Un mensaje especial para ti</span>
+      </div>
+
+      <h1 class="font-extrabold tracking-tight leading-[1.05]
+                 text-4xl sm:text-5xl md:text-7xl lg:text-8xl
+                 text-slate-900 dark:text-white">
+        ¿Me das el honor de ser tu <br class="hidden sm:block"/>
+        <span class="text-primary italic">San Valentín?</span>
+      </h1>
+
+      <p class="text-base sm:text-lg md:text-xl text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+        No hay nadie más con quien prefiera pasar este día (y todos los que vienen) que contigo.
+      </p>
+    </div>
+
+    <!-- Avatar responsive -->
+    <div class="mb-10 sm:mb-12 relative group">
+      <div class="absolute -inset-1 bg-gradient-to-r from-primary to-rose-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+      <div class="relative w-24 h-24 sm:w-32 sm:h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-background-light dark:border-background-dark shadow-2xl">
+        <img
+          alt="Romantic background"
+          class="w-full h-full object-cover"
+          src="imagenes/EntregadeRosa.jpeg"
+        />
+      </div>
+    </div>
+
+    <!-- Botones: responsive + sin overflow -->
+<div class="w-full max-w-xl flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 min-h-[140px] sm:min-h-[160px]">
+
+  <!-- NO (queda primero en el DOM para mantener el hover ~) -->
+  <div class="no-btn-container relative w-full sm:w-auto order-2">
+    <div class="no-tooltip absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-64 p-4 bg-accent text-background-dark font-bold text-sm rounded-2xl shadow-xl opacity-0 invisible transition-all duration-300 pointer-events-none z-50">
+      <div class="relative">
+        ¡Error 404: Respuesta no encontrada! 😉
+        <div class="absolute top-full left-1/2 -translate-x-1/2 w-0 h-0 border-l-[8px] border-l-transparent border-r-[8px] border-r-transparent border-t-[8px] border-t-accent"></div>
+      </div>
+    </div>
+
+    <button class="w-full sm:w-auto px-8 sm:px-10 py-3 sm:py-4 bg-transparent border-2 border-dashed border-slate-300 dark:border-slate-700 text-slate-400 dark:text-slate-500 text-base sm:text-lg font-bold rounded-full transition-all duration-300 hover:opacity-50 cursor-not-allowed">
+      NO
+    </button>
+  </div>
+
+  <!-- ✅ SÍ (se muestra primero siempre) -->
+  <button
+    
+    class="yes-button pulse-effect group relative flex items-center justify-center
+           w-full sm:w-auto order-1
+           px-10 sm:px-14 md:px-16
+           py-4 sm:py-5 md:py-6
+           text-xl sm:text-2xl md:text-3xl
+           bg-primary hover:bg-primary/90 text-white font-black rounded-full
+           transition-all duration-500 transform hover:scale-110 shadow-[0_0_30px_rgba(236,19,19,0.4)]">
+    <span class="relative z-10 flex items-center gap-3">
+      SÍ <span class="material-icons">favorite</span>
+    </span>
+  </button>
+
+</div>
+
+    <!-- Cards: ya estaban responsive, solo ajusto padding/tamaño texto -->
+    <div class="mt-10 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6 opacity-60 hover:opacity-100 transition-opacity w-full max-w-5xl">
+      <div class="bg-white/5 dark:bg-primary/5 backdrop-blur-sm p-5 sm:p-6 rounded-xl border border-white/10 dark:border-primary/10 flex flex-col items-center gap-3">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-icons">restaurant</span>
+        </div>
+        <div class="text-sm">
+          <p class="font-bold">Cena Romántica</p>
+          <p class="text-slate-500">Momento especial</p>
+        </div>
+      </div>
+
+      <div class="bg-white/5 dark:bg-primary/5 backdrop-blur-sm p-5 sm:p-6 rounded-xl border border-white/10 dark:border-primary/10 flex flex-col items-center gap-3">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-icons">schedule</span>
+        </div>
+        <div class="text-sm">
+          <p class="font-bold">Hora Mágica</p>
+          <p class="text-slate-500">14 de Febrero, 20:00</p>
+        </div>
+      </div>
+
+      <div class="bg-white/5 dark:bg-primary/5 backdrop-blur-sm p-5 sm:p-6 rounded-xl border border-white/10 dark:border-primary/10 flex flex-col items-center gap-3">
+        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
+          <span class="material-icons">location_on</span>
+        </div>
+        <div class="text-sm">
+          <p class="font-bold">Lugar</p>
+          <p class="text-slate-500" data-location="Iquitos">Iquitos, Perú</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Corazones (ok) -->
+  <div class="heart-particle text-primary/20" style="left: 10%; animation: floating-hearts 8s infinite ease-in; animation-delay: 0s;">
+    <span class="material-icons text-2xl">favorite</span>
+  </div>
+  <div class="heart-particle text-primary/15" style="left: 25%; animation: floating-hearts 12s infinite ease-in; animation-delay: 2s;">
+    <span class="material-icons text-4xl">favorite</span>
+  </div>
+  <div class="heart-particle text-primary/25" style="left: 45%; animation: floating-hearts 10s infinite ease-in; animation-delay: 5s;">
+    <span class="material-icons text-xl">favorite</span>
+  </div>
+  <div class="heart-particle text-primary/10" style="left: 70%; animation: floating-hearts 15s infinite ease-in; animation-delay: 1s;">
+    <span class="material-icons text-5xl">favorite</span>
+  </div>
+  <div class="heart-particle text-primary/20" style="left: 85%; animation: floating-hearts 9s infinite ease-in; animation-delay: 3s;">
+    <span class="material-icons text-3xl">favorite</span>
+  </div>
+  <div class="heart-particle text-primary/15" style="left: 95%; animation: floating-hearts 11s infinite ease-in; animation-delay: 6s;">
+    <span class="material-icons text-lg">favorite</span>
+  </div>
+
+  <!-- Footer: responsive y sin tapar contenido -->
+  <footer class="fixed bottom-4 sm:bottom-8 left-0 right-0 z-20 text-center px-4">
+    <div class="text-slate-500 text-[10px] sm:text-xs tracking-widest uppercase font-semibold">
+      Con todo mi amor • 2026
+    </div>
+  </footer>
+</body>
+</html>
+
+<script>
+document.querySelector(".yes-button").addEventListener("click", function(e){
+  e.preventDefault();
+
+  // crear corazones dinámicos
+  for(let i=0;i<30;i++){
+    const heart = document.createElement("div");
+    heart.innerHTML = "❤️";
+    heart.style.position = "fixed";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.top = "80vh";
+    heart.style.fontSize = (Math.random()*20+20)+"px";
+    heart.style.transition = "all 2s ease-out";
+    document.body.appendChild(heart);
+
+    setTimeout(()=>{
+      heart.style.top = "-10vh";
+      heart.style.opacity = 0;
+    },100);
+  }
+
+  setTimeout(()=>{
+    window.location.href="code.html";
+  },1500);
+});
+
+const noBtn = document.querySelector(".no-btn-container");
+
+noBtn.addEventListener("mouseenter", ()=>{
+  const x = Math.random()*200 - 100;
+  const y = Math.random()*100 - 50;
+  noBtn.style.transform = `translate(${x}px, ${y}px)`;
+});
+
+</script>
